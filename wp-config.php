@@ -18,8 +18,12 @@
  * @package WordPress
  */
 
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+
 $env	=   getenv('APP_ENV');
 
+/** MySQL database name */
 define('DB_NAME', getenv('DB_NAME'));
 
 /** MySQL database username */
@@ -28,91 +32,57 @@ define('DB_USER', getenv('DB_USER'));
 /** MySQL database password */
 define('DB_PASSWORD', getenv('DB_PASSWD'));
 
+ /** MySQL hostname */
+define('DB_HOST', getenv('DB_SERVER'));
+
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-if( $env === 'production' ) 
+ /** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
+
+/* config based on env */
+switch( $env ) 
 {
-    /** MySQL hostname */
-    define('DB_HOST', '');
-        
-	/** The Database Collate type. Don't change this if in doubt. */
-	define('DB_COLLATE', '');
+	case 'production':
 
-	define('WP_DEBUG', false);
+		define('WP_DEBUG', false);
+		define( 'WP_HOME', '');         //project url
+		define( 'WP_SITEURL', WP_HOME);
+		define('WP_ENV', 'PROD');
+		define( 'WP_CACHE', false );
 
-	define( 'WP_HOME', '');
-	define( 'WP_SITEURL', WP_HOME);
-	
-	define('WP_ENV', 'PROD');
-	
-    define( 'WP_CACHE', false );
-}
+	break;
 
-else if( $env === 'staging' )
-{
+	case 'staging':
 
-	/** MySQL hostname */
-	define('DB_HOST', 'beta.sql.krds.com');
+		define('WP_DEBUG', false);
+		define( 'WP_HOME', '');			//project url
+		define( 'WP_SITEURL', WP_HOME);
+		define('WP_ENV', 'STAG');
+		define( 'WP_CACHE', true );
 
-	/** Database Charset to use in creating database tables. */
-	define('DB_CHARSET', 'utf8');
+	break;
 
-	/** The Database Collate type. Don't change this if in doubt. */
-	define('DB_COLLATE', '');
+	case 'testing':	
 
-	define('WP_DEBUG', false);
+		define('WP_DEBUG', true);
+		define( 'WP_HOME', '');			//project url
+		define( 'WP_SITEURL', WP_HOME);
+		define('WP_ENV', 'TESTING');
+		define( 'WP_CACHE', false );
 
-	define( 'WP_HOME', '');
-	define( 'WP_SITEURL', WP_HOME);
-	
-	define('WP_ENV', 'STAG');
-	
-    define( 'WP_CACHE', true );
-}
-else if( $env === 'testing' ) 
-{	
-	/** MySQL hostname */
-	define('DB_HOST', 'localhost');
+	break;
 
-	/** Database Charset to use in creating database tables. */
-	define('DB_CHARSET', 'utf8');
+	default:  
 
-	/** The Database Collate type. Don't change this if in doubt. */
-	define('DB_COLLATE', '');
+		define('WP_DEBUG', true);
+		define( 'WP_HOME', '');			//project url
+		define( 'WP_SITEURL', WP_HOME);
+		define('WP_ENV', 'DEV');
+		define( 'WP_CACHE', false );
 
-	define('WP_DEBUG', true);
-
-	define( 'WP_HOME', '');
-	define( 'WP_SITEURL', WP_HOME);
-	
-	define('WP_ENV', 'TESTING');
-	
-    define( 'WP_CACHE', false );
-}
-
-else
-{   
-
-    /** MySQL hostname */
-    define('DB_HOST', 'localhost');
-
-    /** Database Charset to use in creating database tables. */
-    define('DB_CHARSET', 'utf8');
-
-    /** The Database Collate type. Don't change this if in doubt. */
-    define('DB_COLLATE', '');
-
-    define('WP_DEBUG', true);
-
-    define( 'WP_HOME', '');
-    define( 'WP_SITEURL', WP_HOME);
-
-    define('WP_ENV', 'DEV');
-	
-	define( 'WP_CACHE', false );
+	break;
 }
 
 
@@ -125,6 +95,10 @@ else
  *
  * @since 2.6.0
  */
+
+
+/* change salt keys don't use default  */
+
 define('AUTH_KEY',         '-+9^$P}5os`KORvhc$C9(!AzrQo4r+Zh~gM[IA_chcgTn[d4~Y-:j!GI5Z`KmSd|');
 define('SECURE_AUTH_KEY',  'jkP)szVjQsBz)#i7/UYg,?|uT_!wCz<QBM=;Va;i3W|CO[es$Y g0Q9{i^ma<qfy');
 define('LOGGED_IN_KEY',    '3[Oo>Uz+{A0b<H7eZ]!|k)2;Q<`X+m6pB>BID?<r50KPnf}1%a}-YM{t2M.!S:Q2');
@@ -142,7 +116,7 @@ define('NONCE_SALT',       'e nz rjtVN++^fY,spY)Jb/- :Qy&u?S/~BgQ`Yg1G%Q!Z<9`R0t
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'kr_';
+$table_prefix  = 'ks_';
 
 /**
  * For developers: WordPress debugging mode.

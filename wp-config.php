@@ -50,7 +50,7 @@ switch( $env )
 	case 'production':
 
 		define('WP_DEBUG', false);
-		define( 'WP_HOME', 'project url');         //project url
+		define( 'WP_HOME', 'project url');         
 		define( 'WP_SITEURL', WP_HOME);
 		define('WP_ENV', 'PROD');
 		define( 'WP_CACHE', false );
@@ -60,7 +60,7 @@ switch( $env )
 	case 'staging':
 
 		define('WP_DEBUG', false);
-		define( 'WP_HOME', 'project url');			//project url
+		define( 'WP_HOME', 'project url');			
 		define( 'WP_SITEURL', WP_HOME);
 		define('WP_ENV', 'STAG');
 		define( 'WP_CACHE', true );
@@ -70,7 +70,7 @@ switch( $env )
 	case 'testing':	
 
 		define('WP_DEBUG', true);
-		define( 'WP_HOME', 'project url');			//project url
+		define( 'WP_HOME', 'project url');			
 		define( 'WP_SITEURL', WP_HOME);
 		define('WP_ENV', 'TESTING');
 		define( 'WP_CACHE', false );
@@ -80,7 +80,7 @@ switch( $env )
 	default:  
 
 		define('WP_DEBUG', true);
-		define( 'WP_HOME', 'project url');			//project url
+		define( 'WP_HOME', 'project url');			
 		define( 'WP_SITEURL', WP_HOME);
 		define('WP_ENV', 'DEV');
 		define( 'WP_CACHE', false );

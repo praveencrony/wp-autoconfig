@@ -24,16 +24,30 @@
 $env	=   getenv('APP_ENV');
 
 /** MySQL database name */
-define('DB_NAME', getenv('DB_NAME'));
+define('DB_NAME', 'dbname');
 
 /** MySQL database username */
-define('DB_USER', getenv('DB_USER'));
+define('DB_USER', 'dbuser');
 
 /** MySQL database password */
-define('DB_PASSWORD', getenv('DB_PASSWD'));
+define('DB_PASSWORD', 'dbpass');
 
  /** MySQL hostname */
-define('DB_HOST', getenv('DB_SERVER'));
+define('DB_HOST', 'dbhost');
+
+
+/** MySQL database name */
+//define('DB_NAME', getenv('DB_NAME')); //krds config
+
+/** MySQL database username */
+//define('DB_USER', getenv('DB_USER')); //krds config
+
+/** MySQL database password */
+//define('DB_PASSWORD', getenv('DB_PASSWD')); //krds config
+
+ /** MySQL hostname */
+//define('DB_HOST', getenv('DB_SERVER')); //krds config
+
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
